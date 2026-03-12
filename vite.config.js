@@ -2,13 +2,14 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import { imagetools } from "vite-imagetools";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
   root: "app",
-  base: "./", // Use relative paths for assets to support subfolders (like GitHub Pages)
+  base: "./",
   server: {
     host: "0.0.0.0",
     allowedHosts: true,
@@ -17,10 +18,24 @@ export default defineConfig({
     host: "0.0.0.0",
     allowedHosts: true,
   },
+  plugins: [
+    imagetools({
+      defaultDirectives: (url) => {
+        // Apply webp conversion to all images in our images directory
+        if (url.pathname.includes("/images/")) {
+          return new URLSearchParams({
+            format: "webp",
+            quality: "80",
+          });
+        }
+        return new URLSearchParams();
+      },
+    }),
+  ],
   build: {
     outDir: "../docs",
     emptyOutDir: true,
-    assetsInlineLimit: 0, // Disable inlining to avoid data URLs in service worker
+    assetsInlineLimit: 0,
     rollupOptions: {
       input: {
         main: resolve(__dirname, "app/index.html"),
