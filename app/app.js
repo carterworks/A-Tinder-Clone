@@ -214,10 +214,7 @@ import imageUrls from "./images.js";
       description:
         "This was later that day when we had time to prepare ourselves.",
     },
-
   ];
-
-
 
   const dataProvider = (function* () {
     while (true) {

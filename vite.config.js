@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
-import { resolve } from "path";
+import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
-import { dirname } from "path";
 import { imagetools } from "vite-imagetools";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -20,8 +19,8 @@ export default defineConfig({
   },
   plugins: [
     imagetools({
+      include: /^[^?]+\.(heif|avif|jpeg|jpg|png|tiff|webp|JPG)(\?.*)?$/,
       defaultDirectives: (url) => {
-        // Apply webp conversion to all images in our images directory
         if (url.pathname.includes("/images/")) {
           return new URLSearchParams({
             format: "webp",

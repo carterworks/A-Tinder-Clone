@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "fast-glob": "^3.3.3",
     "postcss": "^8.4.49",
     "sharp": "^0.34.5",
     "vite": "^8.0.0",
