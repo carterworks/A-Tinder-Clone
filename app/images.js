@@ -5,8 +5,10 @@ const imageModules = import.meta.glob("./images/**/*.{png,jpg,jpeg,gif,svg,JPG,w
 
 const images = {};
 for (const path in imageModules) {
-  const name = path.replace("./images/", "").replace(/\.[^/.]+$/, "");
-  images[name] = imageModules[path];
+  const fullName = path.replace("./images/", "");
+  const nameWithoutExt = fullName.replace(/\.[^/.]+$/, "");
+  images[fullName] = imageModules[path];
+  images[nameWithoutExt] = imageModules[path];
 }
 
 export default images;
