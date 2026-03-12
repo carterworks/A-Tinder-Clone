@@ -8,18 +8,15 @@
   },
   "author": "Surma <surma@surma.link>",
   "license": "Apache-2.0",
+  "type": "module",
   "scripts": {
-    "build": "gulp"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "dependencies": {
-    "babel-preset-babili": "^0.1.4",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-html-minifier": "^0.1.8",
-    "gulp-postcss": "^8.0.0",
-    "gulp-replace": "^1.0.0",
-    "postcss": "^8.2.15",
-    "postcss-cssnext": "^2.9.0",
-    "through2": "^3.0.1"
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49"
   }
 }
